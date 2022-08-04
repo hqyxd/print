@@ -1,0 +1,116 @@
+{
+    "header": [
+        {
+            "text": "奇域备货单",
+            "size": 12,
+            "font": "宋体",
+            "bold": true,
+            "line": true,
+            "x": "48",
+            "y": ""
+        },
+        {
+            "text": "订单号:{id}",
+            "size": 8,
+            "font": "宋体",
+            "bold": false,
+            "line": true,
+            "x": "20",
+            "y": ""
+        },
+        {
+            "text": "数量:{num}",
+            "size": 8,
+            "font": "宋体",
+            "bold": false,
+            "line": true,
+            "x": "20",
+            "y": ""
+        },
+        {
+            "text": "购物时间:{orderTime}",
+            "size": 8,
+            "font": "宋体",
+            "bold": false,
+            "line": true,
+            "x": "20",
+            "y": ""
+        },
+        {
+            "text": "购物人:{wxName}",
+            "size": 8,
+            "font": "宋体",
+            "bold": false,
+            "line": true,
+            "x": "20",
+            "y": ""
+        }
+    ],
+    "gooods": [
+        {
+            "text": "名称",
+            "size": 8,
+            "font": "宋体",
+            "bold": true,
+            "line": false,
+            "x": "20",
+            "y": ""
+        },
+        {
+            "text": "单价",
+            "size": 8,
+            "font": "宋体",
+            "bold": true,
+            "line": false,
+            "x": "60",
+            "y": ""
+        },
+        {
+            "text": "数量",
+            "size": 8,
+            "font": "宋体",
+            "bold": true,
+            "line": false,
+            "x": "90",
+            "y": ""
+        },
+        {
+            "text": "小计",
+            "size": 8,
+            "font": "宋体",
+            "bold": true,
+            "line": false,
+            "x": "120",
+            "y": ""
+        }
+    ],
+    "footer": [
+        {
+            "text": "总价:                    {price}",
+            "size": 8,
+            "font": "宋体",
+            "bold": false,
+            "line": true,
+            "x": "20",
+            "y": ""
+        },
+        {
+            "text": "优惠:                    {discount}",
+            "size": 8,
+            "font": "宋体",
+            "bold": false,
+            "line": true,
+            "x": "20",
+            "y": ""
+        },
+        {
+            "text": "实付:                    {price}",
+            "size": 8,
+            "font": "宋体",
+            "bold": false,
+	        "line": false,
+            "x": "20",
+            "y": ""
+        }
+    ]
+}
