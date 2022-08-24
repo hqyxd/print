@@ -5,6 +5,7 @@ import com.print.utils.analysis.PrintBook;
 import com.print.utils.analysis.PrintObject;
 import com.print.utils.goods.ShoppingOrderDetailEntity;
 import com.print.utils.utils.PropertiesUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.print.PrintService;
@@ -29,6 +30,7 @@ import java.util.regex.Pattern;
  * @see PrintTicket
  * @since
  */
+@Slf4j
 public class PrintTicket implements Printable {
 
     private Map<String, Object> dataMap = new LinkedHashMap<String, Object>();
@@ -228,7 +230,7 @@ public class PrintTicket implements Printable {
 
     private int getStringHeight(Graphics g) {
         int height = g.getFontMetrics().getHeight();
-        System.out.println("字符高度:" + height);
+        log.info("字符高度:" + height);
         return height;
     }
 
@@ -239,21 +241,21 @@ public class PrintTicket implements Printable {
         } else {
             rows = strWidth / rowWidth;
         }
-        System.out.println("行数:" + rows);
+        log.info("行数:" + rows);
         return rows;
     }
 
     private int getStringLength(Graphics g, String str) {
         char[] strcha = str.toCharArray();
         int strWidth = g.getFontMetrics().charsWidth(strcha, 0, str.length());
-        System.out.println("字符总宽度:" + strWidth);
+        log.info("字符总宽度:" + strWidth);
         return strWidth;
     }
 
     private int getRowStrNum(int strnum, int rowWidth, int strWidth) {
         int rowstrnum = 0;
         rowstrnum = (rowWidth * strnum) / strWidth;
-        System.out.println("每行的字符数:" + rowstrnum);
+        log.info("每行的字符数:" + rowstrnum);
         return rowstrnum;
     }
 
@@ -262,11 +264,11 @@ public class PrintTicket implements Printable {
         int strWidth = getStringLength(g, strContent);
         //每一行字符串宽度
         int rowWidth = 60;
-        System.out.println("每行字符宽度:" + rowWidth);
+        log.info("每行字符宽度:" + rowWidth);
         //获取字符高度
         int strHeight = getStringHeight(g);
         //字符串总个数
-        System.out.println("字符串总个数:" + strContent.length());
+        log.info("字符串总个数:" + strContent.length());
         int lineHeigt = 0;
         if (strWidth > rowWidth) {
             int rowstrnum = getRowStrNum(strContent.length(), rowWidth, strWidth);

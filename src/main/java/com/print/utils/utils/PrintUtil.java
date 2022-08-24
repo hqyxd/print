@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.print.utils.PrintTicket;
 import com.print.utils.analysis.PrintBook;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
@@ -15,10 +16,11 @@ import java.util.Map;
  * @version 1.0<br>
  * @CreateDate 2020/6/28 9:19 上午<br>
  */
+@Slf4j
 public class PrintUtil {
 
     public static void print(String jsonData) {
-        System.out.println(">>>>>>>>>>>>>>>>开始打印<<<<<<<<<<<<<<<<<<<");
+        log.info(">>>>>>>>>>>>>>>>开始打印<<<<<<<<<<<<<<<<<<<");
         // 模板解析
         String jsonStr = "";
         try {
@@ -41,7 +43,7 @@ public class PrintUtil {
         // 输出打印
         PrintTicket printTicket = new PrintTicket(printBook, dataMap);
         printTicket.printer();
-        System.out.println(">>>>>>>>>>>>>>>>结束打印<<<<<<<<<<<<<<<<<<<");
+        log.info(">>>>>>>>>>>>>>>>结束打印<<<<<<<<<<<<<<<<<<<");
     }
 
     private static Map<String, Object> getResult(String msg) {
@@ -50,7 +52,7 @@ public class PrintUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(">>>>>>>>>>>>>>>>开始打印<<<<<<<<<<<<<<<<<<<");
+        log.info(">>>>>>>>>>>>>>>>开始打印<<<<<<<<<<<<<<<<<<<");
         // 模板解析
         String jsonStr = "";
         try {
@@ -76,6 +78,6 @@ public class PrintUtil {
         // 输出打印
         PrintTicket printTicket = new PrintTicket(printBook, dataMap);
         printTicket.printer();
-        System.out.println(">>>>>>>>>>>>>>>>结束打印<<<<<<<<<<<<<<<<<<<");
+        log.info(">>>>>>>>>>>>>>>>结束打印<<<<<<<<<<<<<<<<<<<");
     }
 }

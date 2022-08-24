@@ -5,6 +5,7 @@ import com.print.utils.analysis.PrintBook;
 import com.print.utils.goods.GoodsInfo;
 import com.print.utils.utils.PropertiesUtils;
 import com.print.utils.utils.ResourcesUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -15,10 +16,11 @@ import java.util.Map;
 /**
  * 主程序类
  */
+@Slf4j
 public class PrintMain {
 
 	public static void main(String[] args) {
-		System.out.println(">>>>>>>>>>>>>>>>开始打印<<<<<<<<<<<<<<<<<<<");
+		log.info(">>>>>>>>>>>>>>>>开始打印<<<<<<<<<<<<<<<<<<<");
 		// 模板解析
 		String jsonStr = "";
 		try {
@@ -56,6 +58,6 @@ public class PrintMain {
 		// 输出打印
 		PrintTicket printTicket = new PrintTicket(printBook, dataMap);
 		printTicket.printer();
-		System.out.println(">>>>>>>>>>>>>>>>结束打印<<<<<<<<<<<<<<<<<<<");
+		log.info(">>>>>>>>>>>>>>>>结束打印<<<<<<<<<<<<<<<<<<<");
 	}
 }
