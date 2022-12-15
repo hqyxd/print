@@ -9,3 +9,8 @@
 #### template.json 和 PrintUtil里面的处理数据对应可以根据业务实际情况调整
 
 ### com.config
+
+### 2022年12月15日15:17:06 更新内容
+
+// 设置日志追踪 setTraceId(); 参考项目 https://gitee.com/zhoumengkang/wechat-demo.git
+

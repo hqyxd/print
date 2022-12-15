@@ -6,15 +6,14 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.MDC;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 
 /**
@@ -23,16 +22,35 @@ import java.util.Objects;
 @Slf4j
 @Aspect
 @Component
-public class LogPrintAspect {
+public class LogPrintTraceAspect {
+    private final static String TRACE_ID = "TRACE_ID";
 
+    @Autowired
+    HttpServletRequest request;
 
-    @Pointcut("@annotation(com.config.LogPrint)")
-    public void logPointCut() {
+    public void setTraceId() {
+        if (request != null && request.getHeader("Trace-Id") != null) {
+            MDC.put(TRACE_ID, request.getHeader("Trace-Id"));
+        } else {
+            MDC.put(TRACE_ID, UUID.randomUUID().toString().replaceAll("-", ""));
+        }
+    }
+
+    @Pointcut("execution(public * com.print.controller..*.*(..)) ")
+    public void sysLogTracePointCut() {
 
     }
 
-    @Around("logPointCut()")
+    // @Pointcut("execution(public * com.app.controller..*.*(..)) ")
+    // public void appLogTracePointCut() {
+    //
+    // }
+
+    // @Around("sysLogTracePointCut() || appLogTracePointCut()")
+    @Around("sysLogTracePointCut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
+        // 设置日志追踪 setTraceId();
+        setTraceId();
         Object result = point.proceed();
         ServletRequestAttributes attributes =
                 (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
